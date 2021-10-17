@@ -2,6 +2,7 @@ console.log("Welcome to Tic Tac Toe");
 let music = new Audio("music.mp3");
 let audioTurn = new Audio("ting.mp3");
 let gameover = new Audio("gameover.mp3");
+let gamewon = new Audio("gamewon.mp3");
 let turn = "X";
 let isgameover = false;
 
@@ -31,6 +32,7 @@ const checkWin = () => {
     ) {
       document.querySelector(".info").innerText =
         boxtext[e[0]].innerText + " Won";
+      gamewon.play();
       isgameover = true;
       document
         .querySelector(".imgbox")
@@ -39,14 +41,12 @@ const checkWin = () => {
         ".line"
       ).style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`;
       document.querySelector(".line").style.width = "20vw";
-    } else {
-      gameover.play();
     }
   });
 };
 
 // Game Logic
-music.play();
+// music.play();
 let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach((element) => {
   let boxtext = element.querySelector(".boxtext");
